@@ -1,0 +1,40 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+
+{{ error }}
+
+{{ todo.title }}
+
+  {% if todo.archived %}
+
+    <form class="" method="POST" action="{% url 'unarchivetodo' todo.id %}">
+      {% csrf_token %}
+      <button type="submit" name="button">Unarchive</button>
+    </form>
+    <form class="" method="POST" action="{% url 'shredtodo' todo.id %}">
+      {% csrf_token %}
+      <button type="submit" name="button">Shred task</button>
+    </form>
+
+  {% else %}
+
+    <form class="" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" name="button">Save</button>
+    </form>
+
+    <form class="" method="POST" action="{% url 'completetodo' todo.id %}">
+      {% csrf_token %}
+      <button type="submit" name="button">Complete</button>
+    </form>
+
+    <form class="" method="POST" action="{% url 'archivetodo' todo.id %}">
+      {% csrf_token %}
+      <button type="submit" name="button">Archive</button>
+    </form>
+
+  {% endif %}
+
+{% endblock %}
