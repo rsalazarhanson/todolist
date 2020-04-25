@@ -47,10 +47,12 @@
           <button type="submit">Log out</button>
         </form>
 
-          {% else %}
-          <span class="navbar-text"><a href="{% url 'signupuser' %}">Sign Up</a></span>
-          <span class="navbar-text"><a href="{% url 'loginuser' %}">Login</a></span>
-          {% endif %}
+        {% else %}
+
+        <span class="navbar-text"><a href="{% url 'signupuser' %}">Sign Up</a></span>
+        <span class="navbar-text"><a href="{% url 'loginuser' %}">Login</a></span>
+        
+        {% endif %}
 
       </div>
     </nav>
